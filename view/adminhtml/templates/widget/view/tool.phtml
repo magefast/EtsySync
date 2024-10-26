@@ -1,0 +1,59 @@
+<div data-mage-init='{"floatingHeader": {}}' class="page-actions"></div>
+<?php
+$categories = $block->getCategories();
+$syncedData = $block->getSyncedData();
+?>
+<?php
+if ($syncedData == null):
+    ?>
+    <h3>Seems some problems with Etsy API. Please try to click button - Refresh Sync Data</h3>
+    <?php
+    return;
+endif;
+?>
+
+<p style="margin-left: 50px;">
+<ul style="margin-left: 50px; font-size: 18px">
+    <?php foreach ($categories as $c): ?>
+        <?php if (count($c['ids']) == 0): $cId = $c['id']; ?>
+            <li>
+                <strong><?= $c['name']; ?></strong>
+                <ul style="margin-left: 50px;">
+                    <?php foreach ($categories as $c2): ?>
+                        <?php foreach ($c2['ids'] as $nKey => $nValue): ?>
+                            <?php if ($cId == $nValue): ?>
+                                <li>
+                                    <strong><?php echo($c2['name']); ?></strong>
+
+                                    <?php $showSync = true;
+                                    if (isset($syncedData[$c2['id']])): $cssColor = 'orange';
+                                        if ($syncedData[$c2['id']]['magento_product_count'] == $syncedData[$c2['id']]['etsy_product_count']): $cssColor = 'green';
+                                            $showSync = false; endif; ?>
+                                        <strong> &nbsp; <span
+                                                    style="color: <?php echo $cssColor; ?>"><?php echo $syncedData[$c2['id']]['magento_product_count']; ?></span>
+                                            /
+                                            <span style="color: green"><?php echo $syncedData[$c2['id']]['etsy_product_count']; ?></span></strong>
+                                    <?php endif; ?>
+                                    <?php if ($showSync === true): ?>
+                                        <?php if (!empty($c2['etsy_taxonomy_id'])): ?>
+                                            &nbsp;    &nbsp;    <a
+                                                    href="<?= $this->getUrl('etsysync/tool/add', ['categoryId' => $c2['id'], 'etsyTaxonomyId' => $c2['etsy_taxonomy_id']]); ?>">
+                                                Sync to Etsy
+                                            </a>
+                                        <?php else: ?>
+                                            <i style="color: lightcoral">Please fill Category settings Etsy Taxonomy
+                                                ID</i>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                    <br>
+                                    <br>
+                                </li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </ul>
+            </li>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</ul>
+</p>
