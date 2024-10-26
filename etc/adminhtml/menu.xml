@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Strekoza_EtsySync::etsysync" title="Etsy Sync" translate="title" module="Strekoza_EtsySync"
+             parent="Magento_Catalog::catalog" sortOrder="10" dependsOnModule="Strekoza_EtsySync" action="etsysync/sync"
+             resource="Strekoza_EtsySync::etsysync"/>
+    </menu>
+</config>

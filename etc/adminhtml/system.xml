@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="etsysync" translate="label" sortOrder="100">
+            <label>Etsy Sync</label>
+        </tab>
+        <section id="etsysync_sync" translate="label" type="text" sortOrder="999" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <class>separator-top</class>
+            <label>API Settings (V1/V2)</label>
+            <tab>etsysync</tab>
+            <resource>Strekoza_Etsy::config</resource>
+            <group id="api" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>API Settings</label>
+                <field id="consumer_key" type="text" translate="label comment" showInDefault="1" showInWebsite="1"
+                       showInStore="1" sortOrder="10">
+                    <label>API Consumer Key / API Key</label>
+                </field>
+                <field id="consumer_secret" type="text" translate="label comment" showInDefault="1" showInWebsite="1"
+                       showInStore="1" sortOrder="20">
+                    <label>API Consumer Secret</label>
+                </field>
+                <field id="access_token" type="text" translate="label comment" showInDefault="1" showInWebsite="1"
+                       showInStore="1" sortOrder="30">
+                    <label>API Access Token (OLD V1/V2)</label>
+                </field>
+                <field id="access_token_secret" type="text" translate="label comment" showInDefault="1"
+                       showInWebsite="1" showInStore="1" sortOrder="40">
+                    <label>API Access Token Secret</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
