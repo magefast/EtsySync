@@ -2,6 +2,9 @@
 
 Magento / Adobe Commerce Module for Sync product to Etsy marketplace. Use Etsy API V3
 
+# !THIS MODULE IS EXAMPLE - HOW CAN BUILD INTEGRATION WITH ETSY API. TAKE  A LOOK - ETSY API V3 CAN BE NOT PROPERLY WORKS FOR NOW
+
+
 ## Description for Product Synchronisation Magento > Etsy
 
 - Synchronization between Magento and Etsy. Send Products to Etsy via Etsy API
